@@ -1,22 +1,19 @@
-const express = require('express');
-const morgan = require('morgan');
+require('./config/config.js');
+const app = require('./app.js');
 const mongoose = require('mongoose');
-const bodyParser = require('body-parser');
 
-const app = express();
-const port = process.env.PORT || 4000;
 
-app.use(bodyParser.urlencoded({extended: false}));
-app.use(bodyParser.json());
+mongoose.set('useCreateIndex', true);
 
-app.use(morgan('dev'))
+mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true });
 
-app.get('/mensaje',(req,res)=>{
-  res.json({
-    mensaje: 'Hola Mundo'
+const db = mongoose.connection;
+
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function() {
+  console.log('Base de datos conectada');
+  app.listen(process.env.PORT , () => {
+    console.log(`Escuchando en el puerto ${process.env.PORT}`);
   });
 });
 
-app.listen(port , () => {
-  console.log(`Escuchando en el puerto ${port}`);
-});
