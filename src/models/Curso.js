@@ -9,8 +9,9 @@ const cursoSchema = new Schema({
   },
   temas: [{
     type: Schema.Types.ObjectId,
-    ref: 'Temas'
+    ref: 'Tema'
   }],
+  urlImage: String,
   llaves: Number
 });
 

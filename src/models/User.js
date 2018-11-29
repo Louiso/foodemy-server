@@ -24,7 +24,10 @@ const userSchema = new Schema({
     unique: true
   },
   urlImage: String,
-  llaves: Number,
+  llaves: {
+    type: Number,
+    default: 0
+  },
   date: {
     type: Date,
     default: Date.now

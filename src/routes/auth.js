@@ -15,7 +15,8 @@ route.post('/register',async (req,res)=>{
     })
     const token = jwt.sign({user},process.env.SECRET,{
       expiresIn: 60 * 60 * 24
-    }); 
+    });
+    console.log(token);
     res.json({
       ok: true,
       user: user,
@@ -30,17 +31,14 @@ route.post('/register',async (req,res)=>{
 });
 
 route.post('/login',async(req,res)=>{
-  console.log(req.body);
   try{
     const user = await User.findOne({
       email: req.body.email
     })
-
     if(!user) return res.status(404).json({
       ok:false,
       err: 'Usuario o contraseña incorrectos'
     })
-
     if(!bcrypt.compareSync(req.body.password, user.password)) return res.status(404).json({
       ok:false,
       err: 'Usuario o contraseña incorrectos'

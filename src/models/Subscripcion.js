@@ -10,7 +10,10 @@ const subscripcionSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'Curso'
   },
-  temaActual: Number,
+  temaActual:{
+    type: Number,
+    default: 0
+  },
   pruebas:[{
     type: Schema.Types.ObjectId,
     ref: 'Evaluacion'
