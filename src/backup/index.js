@@ -16,6 +16,9 @@ const conceptos = {
     contenido:[{
       tipo: 'TEXT',
       text: 'Este es un texto prueba del tema que aun no se'
+    },{
+      tipo: 'IMAGE',
+      text: 'https://banner2.kisspng.com/20180331/joe/kisspng-lilo-stitch-lilo-pelekai-clip-art-stitch-5abf29b508c845.911580491522477493036.jpg'
     }]
   },{
     nombre: 'Diabetes',

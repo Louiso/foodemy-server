@@ -15,6 +15,8 @@ app.use('/auth',require('./routes/auth.js'));
 app.use('/user',require('./routes/user.js'));
 app.use('/curso',require('./routes/curso.js'));
 app.use('/api',require('./routes/api.js'));
+app.use('/tema',require('./routes/tema.js'));
+app.use('/subscripcion',require('./routes/subscripcion.js'));
 app.use('/ciclo',require('./routes/ciclo.js'));
 
 
