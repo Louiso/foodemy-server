@@ -10,7 +10,11 @@ const evaluacionSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'Tema'
   },
-  respuesta: Number
+  respuesta: Number,
+  date: {
+    type: Date,
+    default: Date.now
+  }
 });
 
 const evaluacionModel = mongoose.model('Evaluacion',evaluacionSchema);

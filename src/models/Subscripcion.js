@@ -17,7 +17,11 @@ const subscripcionSchema = new Schema({
   pruebas:[{
     type: Schema.Types.ObjectId,
     ref: 'Evaluacion'
-  }]
+  }],
+  date : {
+    type: Date,
+    default: Date.now
+  }
 });
 
 const subscripcionModel = mongoose.model('Subscripcion',subscripcionSchema);
