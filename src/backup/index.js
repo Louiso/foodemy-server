@@ -6,6 +6,8 @@ const Post = require('../models/Post.js');
 const Subscripcion = require('../models/Subscripcion.js');
 const Evaluacion = require('../models/Evaluacion.js');
 
+const Intermedio = require('./ciclos/Intermedio/index.js');
+
 const bcrypt = require('bcrypt');
 
 const conceptos = {
@@ -13,7 +15,7 @@ const conceptos = {
   urlImage: 'https://blog.seccionamarilla.com.mx/wp-content/uploads/2017/11/comida_naviden%CC%83a-770x578.jpg',
   llaves: 0,
   temas: [{
-    nombre: 'Metabolismo',
+    nombre: 'Metabolismo2',
     contenido:[{
       tipo: 'TEXT',
       text: 'Este es un texto prueba del tema que aun no se'
@@ -31,7 +33,7 @@ const conceptos = {
       indexCorrecta: 1
     }
   },{
-    nombre: 'Diabetes',
+    nombre: 'Diabetes2',
     contenido:[{
       tipo: 'TEXT',
       text: 'Otro Texto'
@@ -66,7 +68,7 @@ const Basico = {
   cursos: [conceptos, alimentacion]
 }
 
-const ciclos = [Basico]
+const ciclos = [Basico, Intermedio]
 
 async function main(){
 
