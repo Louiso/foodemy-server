@@ -3,7 +3,7 @@ const Antidepresivos = require('./temas/Antidepresivos.js');
 const Intolerancias = require('./temas/Intolerancias.js');
 
 const consideraciones = {
-  nombre: 'Consideraciones',
+  nombre: 'Consideraciones II',
   temas: [
     AdaptacionCuerpo,
     Antidepresivos,
