@@ -2,11 +2,49 @@ const { Router } = require('express');
 
 const User = require('../models/User.js');
 
-const routeUser = Router();
+const routerUser = Router();
 
 const { verificarToken } = require('../middlewares/autenticacion.js');
 
-routeUser.get('/', verificarToken  ,async (req,res)=>{
+routerUser.get('/:_idUser', async (req,res ) => {
+  try{
+    const { _idUser } = req.params;
+    const user = await User.findById(_idUser);
+    res.json({
+      ok: true,
+      user: user
+    });
+  }catch(err){
+    res.json({
+      ok: false,
+      err: err
+    });
+  }
+});
+
+routerUser.put('/:_idUser', async (req , res) => {
+  try{
+    const { premio } = req.body;
+    console.log(premio);
+    const { _idUser } = req.params;
+    const user = await User.findById(_idUser);
+    const updateUser = await User.findByIdAndUpdate(_idUser,{
+      llaves: user.llaves + premio
+    },{ new: true });
+  
+    res.json({
+      ok: true,
+      user: updateUser
+    });
+  }catch(err){
+    res.json({
+      ok: false,
+      err: err
+    });
+  }
+});
+
+routerUser.get('/', verificarToken  ,async (req,res)=>{
   try{
     const users = await User.find({});
     res.json({
@@ -21,4 +59,4 @@ routeUser.get('/', verificarToken  ,async (req,res)=>{
   }
 });
 
-module.exports = routeUser;
+module.exports = routerUser;

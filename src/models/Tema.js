@@ -19,7 +19,11 @@ const temaSchema = new Schema({
     opciones: [{
       type: String
     }],
-    indexCorrecta: Number
+    indexCorrecta: Number,
+    premio: {
+      type: Number,
+      default: 1
+    }
   } 
 });
 

@@ -4,6 +4,7 @@ const Ciclo = require('../models/Ciclo.js');
 const Tema = require('../models/Tema.js');
 const Post = require('../models/Post.js');
 const Subscripcion = require('../models/Subscripcion.js');
+const Evaluacion = require('../models/Evaluacion.js');
 
 const bcrypt = require('bcrypt');
 
@@ -19,7 +20,16 @@ const conceptos = {
     },{
       tipo: 'IMAGE',
       text: 'https://banner2.kisspng.com/20180331/joe/kisspng-lilo-stitch-lilo-pelekai-clip-art-stitch-5abf29b508c845.911580491522477493036.jpg'
-    }]
+    }],
+    prueba: {
+      pregunta: '¿Que es el metabolismo?',
+      opciones: [
+        'Es un hecho establecido hace demasiado tiempo que un lector',
+        'Es un hecho establecido hace demasiado tiempo que un lector 2',
+        'Es un hecho establecido hace demasidao tiempo que un lector 3'
+      ],
+      indexCorrecta: 1
+    }
   },{
     nombre: 'Diabetes',
     contenido:[{
@@ -64,7 +74,10 @@ async function main(){
   await Curso.deleteMany({})
   await Tema.deleteMany({})
   await User.deleteMany({})
-
+  await Subscripcion.deleteMany({});
+  await Evaluacion.deleteMany({});
+  await Post.deleteMany({});
+  
   const newUser = await User.create({
     username: 'Luis Alfredo',
     email: 'gransullca.25@gmail.com',
@@ -80,11 +93,11 @@ async function main(){
         newCurso.temas.push(newTema)
       }
       const cursoDB = await newCurso.save()
-      console.log('CursoDB',cursoDB);
+      // console.log('CursoDB',cursoDB);
       newCiclo.cursos.push(cursoDB)
     }
     const cicloDB = await newCiclo.save()
-    console.log('CicloDB',cicloDB);
+    // console.log('CicloDB',cicloDB);
   }
 }
 
