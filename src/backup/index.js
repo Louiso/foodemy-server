@@ -416,7 +416,7 @@ const noIntencionado = {
 
 const Basico = {
     nombre: 'Basico',
-    cursos: [conceptos, alimentacion, ]
+    cursos: [conceptos, alimentacion, consideraciones, noIntencionado]
 }
 
 const ciclos = [Basico]
