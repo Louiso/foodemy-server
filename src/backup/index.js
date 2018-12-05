@@ -5,7 +5,7 @@ const Tema = require('../models/Tema.js');
 const Post = require('../models/Post.js');
 const Subscripcion = require('../models/Subscripcion.js');
 const Evaluacion = require('../models/Evaluacion.js');
-
+const mongoose = require('mongoose');
 const Intermedio = require('./ciclos/Intermedio/index.js');
 
 const bcrypt = require('bcrypt');
@@ -434,11 +434,12 @@ async function main() {
     await Post.deleteMany({});
 
     const newUser = await User.create({
+        _id: '5c0844b017fc14670cf689e7',
         username: 'Luis Alfredo',
-        email: 'gransullca.25@gmail.com',
+        email: 'A@a',
         password: bcrypt.hashSync('123', 10)
     });
-
+    // console.log(newUser);
     for (let ciclo of ciclos) {
         const newCiclo = await Ciclo.create({ nombre: ciclo.nombre })
         for (let curso of ciclo.cursos) {

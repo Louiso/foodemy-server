@@ -19,4 +19,10 @@ routerTema.get('/:_idTema',async (req,res)=>{
 
 });
 
+routerTema.post('/', async (req,res) => {
+  res.json({
+    ok: true
+  });
+})
+
 module.exports = routerTema;

@@ -19,4 +19,21 @@ routeCurso.get('/',async (req,res)=>{
   }
 })
 
+routeCurso.get('/:_idCurso', async (req,res) => {
+  try{
+    const { _idCurso } = req.params;
+    const curso = await Curso.findById(_idCurso).populate('temas')
+    if(!curso) throw 'No hay curso'
+    res.json({
+      ok: true,
+      curso: curso
+    })
+  }catch(e){
+    res.json({
+      ok: false,
+      err: err
+    });
+  }
+})
+
 module.exports = routeCurso;

@@ -26,6 +26,20 @@ routerSubs.put('/:_idSubscripcion', async (req,res) => {
   }
 });
 
+routerSubs.get('/:_idUser', async (req,res)=>{
+  const { _idUser } = req.params;
+  const subscripcions = await Subscripcion.find({
+    _idUser: _idUser
+  })
+  if(!subscripcions) return res.json({
+    ok: false,
+    err: 'No existen subscripciones'
+  })
+  res.json({
+    ok: true,
+    subscripcions: subscripcions
+  })
+})
 
 routerSubs.get('/:_idUser/:_idCurso',async (req,res)=>{
   const { _idUser, _idCurso } = req.params;
