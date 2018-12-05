@@ -22,7 +22,12 @@ routeCurso.get('/',async (req,res)=>{
 routeCurso.get('/:_idCurso', async (req,res) => {
   try{
     const { _idCurso } = req.params;
-    const curso = await Curso.findById(_idCurso).populate('temas')
+    const curso = await Curso.findById(_idCurso)
+      .populate({
+        path: 'temas', 
+        select: 'nombre prueba'
+      })
+    console.log(curso)
     if(!curso) throw 'No hay curso'
     res.json({
       ok: true,

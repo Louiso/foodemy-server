@@ -21,6 +21,10 @@ const subscripcionSchema = new Schema({
   date : {
     type: Date,
     default: Date.now
+  },
+  llavesObtenidas: {
+    type: Number,
+    default: 0
   }
 });
 

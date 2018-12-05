@@ -3,6 +3,28 @@ const { Router } = require('express');
 
 const routerSubs = Router();
 
+routerSubs.put('/llavesObtenidas/:_idSubscripcion', async ( req, res)=>{
+  const { _idSubscripcion } = req.params
+  const { llavesObtenidas } = req.body;
+  try{
+    const subscripcion = await Subscripcion.findByIdAndUpdate(_idSubscripcion,{
+      llavesObtenidas: llavesObtenidas
+    },{
+      new: true
+    })
+    res.json({
+      ok: true,
+      subscripcion: subscripcion
+    })
+  }catch(err){
+    res.json({
+      ok: false,
+      err: err
+    })
+  }
+  
+})
+
 routerSubs.put('/:_idSubscripcion', async (req,res) => {
   const { _idSubscripcion } = req.params;
   const { _idCurso: { temas }} = await Subscripcion.findById(_idSubscripcion).populate('_idCurso');

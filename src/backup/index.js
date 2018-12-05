@@ -30,7 +30,8 @@ const conceptos = {
                 'La razon por la que como poco y engordo mucho',
                 'Suma de todos los movimiento, acciones y cambios que ocurren en el cuerpo'
             ],
-            indexCorrecta: 1
+            indexCorrecta: 1,
+            premio: 2,
         }
     }, {
         nombre: 'Colesterol',
@@ -48,7 +49,8 @@ const conceptos = {
                 'Es un hecho establecido hace demasiado tiempo que un lector 2',
                 'Es un hecho establecido hace demasidao tiempo que un lector 3'
             ],
-            indexCorrecta: 1
+            indexCorrecta: 1,
+            premio: 2
         }
     }, {
         nombre: 'Digestion',
@@ -457,4 +459,7 @@ async function main() {
     }
 }
 
-main();
+(async ()=>{
+    await main();
+    console.log('LISTO');
+})()
