@@ -4,7 +4,8 @@ const { Router } = require('express');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const route = Router();
-
+const Subscripcion = require('../models/Subscripcion.js');
+const Curso = require('../models/Curso.js');
 route.post('/register',async (req,res)=>{
   const { username , password, email } = req.body;
   try{
@@ -12,6 +13,14 @@ route.post('/register',async (req,res)=>{
       username,
       password: bcrypt.hashSync(password, 10),
       email
+    })
+
+    const cursoConceptos = await Curso.findOne({
+      nombre: 'Conceptos'
+    });
+    await Subscripcion.create({
+      _idUser: user._id,
+      _idCurso: cursoConceptos._id
     })
     const token = jwt.sign({user},process.env.SECRET,{
       expiresIn: 60 * 60 * 24
