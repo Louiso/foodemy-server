@@ -25,11 +25,9 @@ routerUser.get('/:_idUser', async (req,res ) => {
 routerUser.put('/:_idUser', async (req , res) => {
   try{
     const { premio } = req.body;
-    console.log(premio);
     const { _idUser } = req.params;
-    const user = await User.findById(_idUser);
     const updateUser = await User.findByIdAndUpdate(_idUser,{
-      llaves: user.llaves + premio
+      llaves: premio
     },{ new: true });
   
     res.json({

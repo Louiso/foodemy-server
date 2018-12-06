@@ -457,6 +457,13 @@ async function main() {
         const cicloDB = await newCiclo.save()
             // console.log('CicloDB',cicloDB);
     }
+    const cursoConceptos = await Curso.findOne({
+        nombre: 'Conceptos'
+    })
+    await Subscripcion.create({
+        _idUser: newUser._id,
+        _idCurso: cursoConceptos._id
+    })
 }
 
 (async ()=>{
