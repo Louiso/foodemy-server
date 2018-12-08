@@ -7,13 +7,32 @@ const route = Router();
 const Subscripcion = require('../models/Subscripcion.js');
 const Curso = require('../models/Curso.js');
 route.post('/register',async (req,res)=>{
-  const { username , password, email } = req.body;
+  const { username , password, email, altura, peso, edad, sexo } = req.body;
   try{
-    const user = await User.create({
-      username,
-      password: bcrypt.hashSync(password, 10),
-      email
-    })
+    let user;
+    console.log({
+      altura,
+      peso,
+      edad,
+      sexo
+    });
+    if(altura && peso && edad && sexo){
+      user = await User.create({
+        username,
+        password: bcrypt.hashSync(password, 10),
+        email,
+        altura,
+        peso,
+        edad,
+        sexo
+      })
+    }else{
+      user = await User.create({
+        username,
+        password: bcrypt.hashSync(password, 10),
+        email,
+      })
+    }
 
     const cursoConceptos = await Curso.findOne({
       nombre: 'Conceptos'

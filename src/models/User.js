@@ -39,7 +39,23 @@ const userSchema = new Schema({
   posts: [{
     type: Schema.Types.ObjectId,
     ref: 'Post'
-  }]
+  }],
+  altura: {
+    type: Number,
+    default: 1.7
+  },
+  peso: {
+    type: Number,
+    default: 65
+  },
+  edad: {
+    type: Number,
+    default: 18
+  },
+  sexo: {
+    type: String,
+    default: 'M'
+  }
 });
 
 userSchema.methods.toJSON = function(){
